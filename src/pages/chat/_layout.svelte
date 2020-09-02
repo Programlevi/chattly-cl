@@ -14,7 +14,11 @@
 
   onMount(() => {
     const interval = setInterval(() => {
-      mutate(UPDATE_LAST_SEEN).then();
+      mutate(UPDATE_LAST_SEEN)
+        .then()
+        .catch((err) => {
+          console.log(err);
+        });
     }, 3000);
     return () => {
       clearInterval(interval);
